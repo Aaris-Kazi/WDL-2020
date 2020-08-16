@@ -1,0 +1,37 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Create account-GOHUB</title>
+        <link rel="stylesheet" type="text/css" href="templates/mystyle.css">
+    </head>
+    <body>
+        <div class="login-wrapper">
+            <section>
+                <div class="box">
+                    <header class="login_header">
+                        <a href="login.php">
+                            <button class="previous_login">
+                                <span class="prev_wrapper">
+                                    <img class="previous_login_icon" src="templates/left-chevron.png">
+                                </span>
+                            </button>
+                        </a>
+                        <a class="login_logo_box" href="index.php">
+                            <img class="login_logo" src="templates/branding.png" alt="login_logo">
+                        </a>
+                    </header>
+                    <div class="login-box">
+                        <h1 class="headline">Login or Create an Account</h1>
+                        <form method="POST" action="">
+                            <input class="login_name" placeholder="Name" type="text" name="check_name" autocomplete="username" required autofocus="autofocus"><span class="error"></span>
+                            <input class="login_email" placeholder="Email Address" type="email" name="check_email"  autocomplete="user_pass" required autofocus="autofocus"><span class="error"></span>
+                            <input class="login_pass" placeholder="Password" type="password" name="check_pass"  required autofocus="autofocus"><span class="error"></span>
+                            <button class="login-button" type="submit" name="register" value="register">Register</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+            </div>
+    </body>
+</html>
