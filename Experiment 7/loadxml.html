@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Semester Marksheet</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, inital-scale=1.0">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <script language="JavaScript" type="text/javascript">
+    function loadXMLDOC(dname)
+    {
+        if(window.XMLHttpRequest)
+        {
+            xhttp=new XMLHttpRequest();
+        }
+        else
+        {
+            xhttp=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xhttp.open("GET",dname,false);
+        xhttp.send();
+        return xhttp.responseXML;
+    }
+
+    function loadMarksheetXML(sname,mname,sno){
+        xmlDoc=loadXMLDOC(mname);
+        x=xmlDoc.getElementsByTagName("course");
+
+        var divText="<table width='70%'><tr>"+
+        "<th colspan=9>Name : "+sname+"</th></tr>"+
+        "<tr><th colspan=9>Exam :  SE (Sem IV) CBCGS</th></tr>"+
+        "<tr><th colspan=9>Branch :  Computer Engg</th></tr>"+
+        "<tr><th colspan=9>HELD in :  May 2020(REGULAR)</th></tr>"+
+        "<tr><th colspan=9>Seat no :  COC0001</th></tr>"+
+        "<tr></tr><tr><th>Course ID</th><th>Course Title</th>"+
+        "<th>Course Credits</th><th>ESE / OR / PR</th>"+
+        "<th>TW</th><th>Overall Earned</th>"+
+        "<th>CXGP</th></tr>";
+
+        for(i=0;i<x.length-2;i++){
+
+            courseid=xmlDoc.getElementsByTagName("courseid")[i].childNodes[0].nodeValue;
+            title=xmlDoc.getElementsByTagName("title")[i].childNodes[0].nodeValue;
+            CRD=xmlDoc.getElementsByTagName("CRD")[i].childNodes[0].nodeValue;
+            EDORPR=xmlDoc.getElementsByTagName("EDORPR")[i].childNodes[0].nodeValue;
+            TW=xmlDoc.getElementsByTagName("TW")[i].childNodes[0].nodeValue;
+            OE=xmlDoc.getElementsByTagName("OE")[i].childNodes[0].nodeValue;
+            total=xmlDoc.getElementsByTagName("total")[i].childNodes[0].nodeValue;
+
+            divText+="<tr><td>"+courseid+"</td><td>"+title+"</td><td>"+CRD+"</td><td>"+
+                    EDORPR+"</td><td>"+TW+"</td><td>"+OE+"</td><td>"+total+"</td></tr>";
+        }
+        
+            courseid=xmlDoc.getElementsByTagName("courseid")[i].childNodes[0].nodeValue;
+            title=xmlDoc.getElementsByTagName("title")[i].childNodes[0].nodeValue;
+            CRD=xmlDoc.getElementsByTagName("CRD")[i].childNodes[0].nodeValue;
+            EDORPR=xmlDoc.getElementsByTagName("EDORPR")[i].childNodes[0].nodeValue;
+            TW=xmlDoc.getElementsByTagName("TW")[i].childNodes[0].nodeValue;
+            OE=xmlDoc.getElementsByTagName("OE")[i].childNodes[0].nodeValue;
+            total=xmlDoc.getElementsByTagName("total")[i].childNodes[0].nodeValue;
+
+            divText+="<tr><td>"+courseid+"</td><td>"+title+"</td><td>"+CRD+"</td><td>"+
+                    EDORPR+"</td><td>"+TW+"</td><td>"+OE+"</td><td>"+total+"</td></tr>";
+            
+            courseid=xmlDoc.getElementsByTagName("courseid")[i+1].childNodes[0].nodeValue;
+            title=xmlDoc.getElementsByTagName("title")[i+1].childNodes[0].nodeValue;
+            CRD=xmlDoc.getElementsByTagName("CRD")[i+1].childNodes[0].nodeValue;
+            EDORPR=xmlDoc.getElementsByTagName("EDORPR")[i+1].childNodes[0].nodeValue;
+            TW=xmlDoc.getElementsByTagName("TW")[i+1].childNodes[0].nodeValue;
+            OE=xmlDoc.getElementsByTagName("OE")[i+1].childNodes[0].nodeValue;
+            total=xmlDoc.getElementsByTagName("total")[i+1].childNodes[0].nodeValue;
+            
+            divText+="<tr><td colspan=2>"+courseid+"</td><td colspan=2>"+title+
+            "</td><td colspan=2>"+CRD+"</td><td>"+EDORPR+"</td>";
+
+        divText+="</table>";
+        document.getElementById("marksheet").innerHTML=divText;
+        document.getElementById("watermark").style.display = "block";
+    }    
+    </script>
+
+<style type="text/css" media="screen">
+    #marksheet table, table td, table th{
+        border: 1px solid black;
+        border-collapse: collapse;
+        padding: 10px;
+        margin: 0 auto;
+        margin-top: 1%;
+        zoom: 89%;
+        text-align: center;
+    }
+    #watermark
+    {
+     position:fixed;
+     bottom:20%;
+     right:42%;
+     opacity:0.2;
+     z-index:99;
+     color:white;     
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="block-heading">
+            <h2 class="text-info">Marksheet</h2>
+
+        </div>
+
+        <div class="container">
+            <p align="center">
+                <input type="submit" value="Mazhar Result" onclick="loadMarksheetXML('Mazhar Khan','mazharmarksheet.xml','31')" />
+                <input type="submit" value="Sahil Result" onclick="loadMarksheetXML('Sahil Mulani','sahilmarksheet.xml','41')" />
+                
+            </p>
+            <div id="marksheet" class="block-content">
+            </div>
+        </div>
+
+    </div>
+        
+</body>
+</html>
